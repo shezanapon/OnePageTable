@@ -13,7 +13,7 @@ import TableRow from "@material-ui/core/TableRow";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { Autocomplete } from "@material-ui/lab";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 
 const countries = [
   { code: "AD", label: "Andorra", phone: "376" },
@@ -27,14 +27,14 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(0.3),
-
-      width: "45ch",
     },
   },
 }));
 export default function Page() {
-  const { handleSubmit, reset, setValu, control } = useForm();
-  const [data, setData] = useState(null);
+  const { handleSubmit, reset, setValu, control } = useForm({});
+  const handleFinalSubmit = (data) => {
+    console.log(data);
+  };
   const [value, setValue] = React.useState(options[0]);
   const [inputValue, setInputValue] = React.useState("");
   const classes = useStyles();
@@ -47,7 +47,7 @@ export default function Page() {
           style={{
             backgroundColor: "white",
             width: "800px",
-            height: "260vh",
+            height: "275vh",
             boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
             marginTop: "30px",
             marginBottom: "30px",
@@ -74,212 +74,304 @@ export default function Page() {
               </p>
               <hr style={{ color: "gray" }} />
               <form
-                onSubmit={handleSubmit((data) => setData(data))}
-                className="form"
+                onSubmit={handleSubmit((data) => handleFinalSubmit(data))}
                 noValidate
                 autoComplete="off"
               >
                 <p style={{ paddingTop: "25px" }}>
                   First Name <span style={{ color: "red" }}>*</span>
                 </p>
-                <TextField
-                  style={{ paddingBottom: "25px" }}
-                  inputProps={{
-                    style: {
-                      height: 35,
-                      width: 340,
-                      padding: "0 14px",
-                    },
-                  }}
-                  id="outlined-basic"
-                  label="First name"
-                  variant="outlined"
-                  size="small"
+                <Controller
+                  control={control}
+                  name="First Name"
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      style={{ paddingBottom: "25px" }}
+                      inputProps={{
+                        style: {
+                          height: 35,
+                          width: 340,
+                          padding: "0 14px",
+                        },
+                      }}
+                      id="outlined-basic"
+                      label="First name"
+                      variant="outlined"
+                      size="small"
+                    />
+                  )}
                 />
                 <p>Last Name</p>
-                <TextField
-                  style={{ paddingBottom: "25px" }}
-                  inputProps={{
-                    style: {
-                      height: 35,
-                      width: 340,
-                      padding: "0 14px",
-                    },
-                  }}
-                  id="outlined-basic"
-                  label="Last name"
-                  variant="outlined"
-                  size="small"
+
+                <Controller
+                  control={control}
+                  name="Last Name"
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      style={{ paddingBottom: "25px" }}
+                      inputProps={{
+                        style: {
+                          height: 35,
+                          width: 340,
+                          padding: "0 14px",
+                        },
+                      }}
+                      id="outlined-basic"
+                      label="Last name"
+                      variant="outlined"
+                      size="small"
+                    />
+                  )}
                 />
 
                 <p>
                   Email <span style={{ color: "red" }}>*</span>
                 </p>
-                <TextField
-                  style={{ paddingBottom: "25px" }}
-                  inputProps={{
-                    style: {
-                      height: 35,
-                      width: 340,
-                      padding: "0 14px",
-                    },
-                  }}
-                  id="outlined-basic"
-                  label="Email"
-                  variant="outlined"
-                  size="small"
+                <Controller
+                  control={control}
+                  name="Email"
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      style={{ paddingBottom: "25px" }}
+                      inputProps={{
+                        style: {
+                          height: 35,
+                          width: 340,
+                          padding: "0 14px",
+                        },
+                      }}
+                      id="outlined-basic"
+                      label="Email"
+                      variant="outlined"
+                      size="small"
+                    />
+                  )}
                 />
+
                 <p>Trading Name</p>
-                <TextField
-                  style={{ paddingBottom: "25px" }}
-                  inputProps={{
-                    style: {
-                      height: 35,
-                      width: 340,
-                      padding: "0 14px",
-                    },
-                  }}
-                  id="outlined-basic"
-                  label="Trading name"
-                  variant="outlined"
-                  size="small"
+                <Controller
+                  control={control}
+                  name="Trading Name"
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      style={{ paddingBottom: "25px" }}
+                      inputProps={{
+                        style: {
+                          height: 35,
+                          width: 340,
+                          padding: "0 14px",
+                        },
+                      }}
+                      id="outlined-basic"
+                      label="Trading name"
+                      variant="outlined"
+                      size="small"
+                    />
+                  )}
                 />
+
                 <p>ABN</p>
-                <TextField
-                  style={{ paddingBottom: "25px" }}
-                  inputProps={{
-                    style: {
-                      height: 35,
-                      width: 340,
-                      padding: "0 14px",
-                    },
-                  }}
-                  id="outlined-basic"
-                  label="ABN"
-                  variant="outlined"
-                  size="small"
+                <Controller
+                  control={control}
+                  name="ABN"
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      style={{ paddingBottom: "25px" }}
+                      inputProps={{
+                        style: {
+                          height: 35,
+                          width: 340,
+                          padding: "0 14px",
+                        },
+                      }}
+                      id="outlined-basic"
+                      label="ABN"
+                      variant="outlined"
+                      size="small"
+                    />
+                  )}
                 />
+
                 <p>Street</p>
-                <TextField
-                  style={{ paddingBottom: "25px" }}
-                  inputProps={{
-                    style: {
-                      height: 35,
-                      width: 340,
-                      padding: "0 14px",
-                    },
-                  }}
-                  id="outlined-basic"
-                  label="Street"
-                  variant="outlined"
-                  size="small"
+                <Controller
+                  control={control}
+                  name="Street"
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      style={{ paddingBottom: "25px" }}
+                      inputProps={{
+                        style: {
+                          height: 35,
+                          width: 340,
+                          padding: "0 14px",
+                        },
+                      }}
+                      id="outlined-basic"
+                      label="Street"
+                      variant="outlined"
+                      size="small"
+                    />
+                  )}
                 />
+
                 <p>City</p>
-                <TextField
-                  style={{ paddingBottom: "25px" }}
-                  inputProps={{
-                    style: {
-                      height: 35,
-                      width: 340,
-                      padding: "0 14px",
-                    },
-                  }}
-                  id="outlined-basic"
-                  label="City"
-                  variant="outlined"
-                  size="small"
+                <Controller
+                  control={control}
+                  name="City"
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      style={{ paddingBottom: "25px" }}
+                      inputProps={{
+                        style: {
+                          height: 35,
+                          width: 340,
+                          padding: "0 14px",
+                        },
+                      }}
+                      id="outlined-basic"
+                      label="City"
+                      variant="outlined"
+                      size="small"
+                    />
+                  )}
                 />
+
                 <p>State</p>
-                <TextField
-                  style={{ paddingBottom: "25px" }}
-                  inputProps={{
-                    style: {
-                      height: 35,
-                      width: 340,
-                      padding: "0 14px",
-                    },
-                  }}
-                  id="outlined-basic"
-                  label="State"
-                  variant="outlined"
-                  size="small"
+                <Controller
+                  control={control}
+                  name="State"
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      style={{ paddingBottom: "25px" }}
+                      inputProps={{
+                        style: {
+                          height: 35,
+                          width: 340,
+                          padding: "0 14px",
+                        },
+                      }}
+                      id="outlined-basic"
+                      label="State"
+                      variant="outlined"
+                      size="small"
+                    />
+                  )}
                 />
+
                 <p>Postcode</p>
-                <TextField
-                  style={{ paddingBottom: "25px" }}
-                  inputProps={{
-                    style: {
-                      height: 35,
-                      width: 340,
-                      padding: "0 14px",
-                    },
-                  }}
-                  id="outlined-basic"
-                  label="Postcode"
-                  variant="outlined"
-                  size="small"
+                <Controller
+                  control={control}
+                  name="Postcode"
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      style={{ paddingBottom: "25px" }}
+                      inputProps={{
+                        style: {
+                          height: 35,
+                          width: 340,
+                          padding: "0 14px",
+                        },
+                      }}
+                      id="outlined-basic"
+                      label="Postcode"
+                      variant="outlined"
+                      size="small"
+                    />
+                  )}
                 />
+
                 <p>Invoice Date</p>
-                <TextField
-                  style={{ paddingBottom: "25px" }}
-                  inputProps={{
-                    style: {
-                      height: 35,
-                      width: 340,
-                      padding: "0 14px",
-                    },
-                  }}
-                  id="outlined-basic"
-                  type="date"
-                  variant="outlined"
-                  size="small"
+                <Controller
+                  control={control}
+                  name="Invoice Date"
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      style={{ paddingBottom: "25px" }}
+                      inputProps={{
+                        style: {
+                          height: 35,
+                          width: 340,
+                          padding: "0 14px",
+                        },
+                      }}
+                      id="outlined-basic"
+                      type="date"
+                      variant="outlined"
+                      size="small"
+                    />
+                  )}
                 />
 
                 <p>Invoice No</p>
-                <TextField
-                  style={{ paddingBottom: "25px" }}
-                  inputProps={{
-                    style: {
-                      height: 35,
-                      width: 340,
-                      padding: "0 14px",
-                    },
-                  }}
-                  id="outlined-basic"
-                  label="Invoice No"
-                  variant="outlined"
-                  size="small"
+                <Controller
+                  control={control}
+                  name="Invoice No"
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      style={{ paddingBottom: "25px" }}
+                      inputProps={{
+                        style: {
+                          height: 35,
+                          width: 340,
+                          padding: "0 14px",
+                        },
+                      }}
+                      id="outlined-basic"
+                      label="Invoice No"
+                      variant="outlined"
+                      size="small"
+                    />
+                  )}
                 />
+
                 <p>
                   Registered for GST? <span style={{ color: "red" }}>*</span>
                 </p>
-
-                <Autocomplete
-                  size="small"
-                  style={{ padding: 0, margin: 0 }}
-                  value={value}
-                  onChange={(event, newValue) => {
-                    setValue(newValue);
-                  }}
-                  inputValue={inputValue}
-                  onInputChange={(event, newInputValue) => {
-                    setInputValue(newInputValue);
-                  }}
-                  id="controllable-states-demo"
-                  options={options}
-                  renderInput={(params) => (
-                    <TextField
+                <Controller
+                  control={control}
+                  name="Registered for GST"
+                  render={({ field }) => (
+                    <Autocomplete
+                      {...field}
                       size="small"
-                      inputProps={{
-                        style: {
-                          height: 15,
-                          width: 340,
-                          padding: "0",
-                          margin: 0,
-                        },
+                      style={{ padding: 0, margin: 0 }}
+                      value={value}
+                      onChange={(event, newValue) => {
+                        setValue(newValue);
                       }}
-                      {...params}
-                      variant="outlined"
+                      inputValue={inputValue}
+                      onInputChange={(event, newInputValue) => {
+                        setInputValue(newInputValue);
+                      }}
+                      id="controllable-states-demo"
+                      options={options}
+                      renderInput={(params) => (
+                        <TextField
+                          {...field}
+                          size="small"
+                          inputProps={{
+                            style: {
+                              height: 15,
+                              width: 340,
+                              padding: "0",
+                              margin: 0,
+                            },
+                          }}
+                          {...params}
+                          variant="outlined"
+                        />
+                      )}
                     />
                   )}
                 />
@@ -310,71 +402,100 @@ export default function Page() {
                         <AddCircleOutlineIcon />
                       </TableCell>
                       <TableCell align="left">
-                        <TextField
-                          inputProps={{
-                            style: {
-                              height: 38,
-                              width: 100,
-                              padding: "0 14px",
-                            },
-                          }}
-                          variant="outlined"
-                          size="small"
-                        />
-                      </TableCell>
-                      <TableCell align="left">
-                        <Autocomplete
-                          size="small"
-                          id="country-select-demo"
-                          style={{ width: 130 }}
-                          options={countries}
-                          classes={{
-                            option: classes.option,
-                          }}
-                          autoHighlight
-                          getOptionLabel={(option) => option.label}
-                          renderOption={(option) => (
-                            <React.Fragment>
-                              {option.label} ({option.code}) +{option.phone}
-                            </React.Fragment>
-                          )}
-                          renderInput={(params) => (
+                        <Controller
+                          control={control}
+                          name="Job No"
+                          render={({ field }) => (
                             <TextField
-                              {...params}
-                              label="Select"
-                              variant="outlined"
+                              {...field}
                               inputProps={{
-                                ...params.inputProps,
-                                autoComplete: "new-password", // disable autocomplete and autofill
+                                style: {
+                                  height: 38,
+                                  width: 100,
+                                  padding: "0 14px",
+                                },
                               }}
+                              variant="outlined"
+                              size="small"
                             />
                           )}
                         />
                       </TableCell>
                       <TableCell align="left">
-                        <TextField
-                          inputProps={{
-                            style: {
-                              height: 38,
-                              width: 100,
-                              padding: "0 14px",
-                            },
-                          }}
-                          variant="outlined"
-                          size="small"
+                        <Controller
+                          control={control}
+                          name="Contract Description"
+                          render={({ field }) => (
+                            <Autocomplete
+                              {...field}
+                              size="small"
+                              id="country-select-demo"
+                              style={{ width: 130 }}
+                              options={countries}
+                              classes={{
+                                option: classes.option,
+                              }}
+                              autoHighlight
+                              getOptionLabel={(option) => option.label}
+                              renderOption={(option) => (
+                                <React.Fragment>
+                                  {option.label} ({option.code}) +{option.phone}
+                                </React.Fragment>
+                              )}
+                              renderInput={(params) => (
+                                <TextField
+                                  {...field}
+                                  {...params}
+                                  label="Select"
+                                  variant="outlined"
+                                  inputProps={{
+                                    ...params.inputProps,
+                                    autoComplete: "new-password", // disable autocomplete and autofill
+                                  }}
+                                />
+                              )}
+                            />
+                          )}
                         />
                       </TableCell>
                       <TableCell align="left">
-                        <TextField
-                          inputProps={{
-                            style: {
-                              height: 38,
-                              width: 100,
-                              padding: "0 14px",
-                            },
-                          }}
-                          variant="outlined"
-                          size="small"
+                        <Controller
+                          control={control}
+                          name="Site Name/Other"
+                          render={({ field }) => (
+                            <TextField
+                              {...field}
+                              inputProps={{
+                                style: {
+                                  height: 38,
+                                  width: 100,
+                                  padding: "0 14px",
+                                },
+                              }}
+                              variant="outlined"
+                              size="small"
+                            />
+                          )}
+                        />
+                      </TableCell>
+                      <TableCell align="left">
+                        <Controller
+                          control={control}
+                          name="Price"
+                          render={({ field }) => (
+                            <TextField
+                              {...field}
+                              inputProps={{
+                                style: {
+                                  height: 38,
+                                  width: 100,
+                                  padding: "0 14px",
+                                },
+                              }}
+                              variant="outlined"
+                              size="small"
+                            />
+                          )}
                         />
                       </TableCell>
                     </TableRow>
@@ -382,110 +503,153 @@ export default function Page() {
                 </Table>
 
                 <p style={{ paddingTop: "25px" }}>Total G.S.T</p>
-                <TextField
-                  style={{ paddingBottom: "25px" }}
-                  inputProps={{
-                    style: {
-                      height: 35,
-                      width: 340,
-                      padding: "0 14px",
-                    },
-                  }}
-                  id="outlined-basic"
-                  label="Total G.S.T"
-                  variant="outlined"
-                  size="small"
+                <Controller
+                  control={control}
+                  name="Total G.S.T"
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      style={{ paddingBottom: "25px" }}
+                      inputProps={{
+                        style: {
+                          height: 35,
+                          width: 340,
+                          padding: "0 14px",
+                        },
+                      }}
+                      id="outlined-basic"
+                      label="Total G.S.T"
+                      variant="outlined"
+                      size="small"
+                    />
+                  )}
                 />
+
                 <p>Total Inclusive of G.S.T</p>
-                <TextField
-                  style={{ paddingBottom: "25px" }}
-                  inputProps={{
-                    style: {
-                      height: 35,
-                      width: 340,
-                      padding: "0 14px",
-                    },
-                  }}
-                  id="outlined-basic"
-                  label="Total Inclusive of G.S.T"
-                  variant="outlined"
-                  size="small"
+                <Controller
+                  control={control}
+                  name="Total Inclusive of G.S.T"
+                  render={({ field }) => (
+                    <TextField
+                      style={{ paddingBottom: "25px" }}
+                      inputProps={{
+                        style: {
+                          height: 35,
+                          width: 340,
+                          padding: "0 14px",
+                        },
+                      }}
+                      id="outlined-basic"
+                      label="Total Inclusive of G.S.T"
+                      variant="outlined"
+                      size="small"
+                    />
+                  )}
                 />
+
                 <p>Account Name</p>
-                <TextField
-                  style={{ paddingBottom: "25px" }}
-                  inputProps={{
-                    style: {
-                      height: 35,
-                      width: 340,
-                      padding: "0 14px",
-                    },
-                  }}
-                  id="outlined-basic"
-                  label="Account name"
-                  variant="outlined"
-                  size="small"
+                <Controller
+                  control={control}
+                  name="Account Name"
+                  render={({ field }) => (
+                    <TextField
+                      style={{ paddingBottom: "25px" }}
+                      inputProps={{
+                        style: {
+                          height: 35,
+                          width: 340,
+                          padding: "0 14px",
+                        },
+                      }}
+                      id="outlined-basic"
+                      label="Account name"
+                      variant="outlined"
+                      size="small"
+                    />
+                  )}
                 />
+
                 <p>Bank</p>
-                <TextField
-                  style={{ paddingBottom: "25px" }}
-                  inputProps={{
-                    style: {
-                      height: 35,
-                      width: 340,
-                      padding: "0 14px",
-                    },
-                  }}
-                  id="outlined-basic"
-                  label="Bank"
-                  variant="outlined"
-                  size="small"
+                <Controller
+                  control={control}
+                  name="Bank"
+                  render={({ field }) => (
+                    <TextField
+                      style={{ paddingBottom: "25px" }}
+                      inputProps={{
+                        style: {
+                          height: 35,
+                          width: 340,
+                          padding: "0 14px",
+                        },
+                      }}
+                      id="outlined-basic"
+                      label="Bank"
+                      variant="outlined"
+                      size="small"
+                    />
+                  )}
                 />
+
                 <p>Account No.</p>
-                <TextField
-                  style={{ paddingBottom: "25px" }}
-                  inputProps={{
-                    style: {
-                      height: 35,
-                      width: 340,
-                      padding: "0 14px",
-                    },
-                  }}
-                  id="outlined-basic"
-                  label="Account No."
-                  variant="outlined"
-                  size="small"
+                <Controller
+                  control={control}
+                  name="Account No."
+                  render={({ field }) => (
+                    <TextField
+                      style={{ paddingBottom: "25px" }}
+                      inputProps={{
+                        style: {
+                          height: 35,
+                          width: 340,
+                          padding: "0 14px",
+                        },
+                      }}
+                      id="outlined-basic"
+                      label="Account No."
+                      variant="outlined"
+                      size="small"
+                    />
+                  )}
                 />
+
                 <p>BSB</p>
-                <TextField
-                  style={{ paddingBottom: "25px" }}
-                  inputProps={{
-                    style: {
-                      height: 35,
-                      width: 340,
-                      padding: "0 14px",
-                    },
-                  }}
-                  id="outlined-basic"
-                  label="BSB"
-                  variant="outlined"
-                  size="small"
+                <Controller
+                  control={control}
+                  name="BSB"
+                  render={({ field }) => (
+                    <TextField
+                      style={{ paddingBottom: "25px" }}
+                      inputProps={{
+                        style: {
+                          height: 35,
+                          width: 340,
+                          padding: "0 14px",
+                        },
+                      }}
+                      id="outlined-basic"
+                      label="BSB"
+                      variant="outlined"
+                      size="small"
+                    />
+                  )}
                 />
+
+                <center>
+                  <Button
+                    style={{
+                      width: "130px",
+                      color: "white",
+                      backgroundColor: "#009688",
+                    }}
+                    variant="contained"
+                  >
+                    Submit
+                  </Button>
+                </center>
               </form>
             </Box>
           </Box>
-          <center>
-            <Button
-              style={{
-                width: "130px",
-                color: "white",
-                backgroundColor: "#009688",
-              }}
-              variant="contained"
-            >
-              Submit
-            </Button>
-          </center>
         </Typography>
       </Container>
     </React.Fragment>
