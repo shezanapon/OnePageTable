@@ -14,13 +14,12 @@ import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { Autocomplete } from "@material-ui/lab";
 import { Controller, useForm } from "react-hook-form";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const countries = [
-  { code: "AD", label: "Andorra", phone: "376" },
-  { code: "AE", label: "United Arab Emirates", phone: "971" },
-  { code: "AF", label: "Afghanistan", phone: "93" },
-  { code: "AG", label: "Antigua and Barbuda", phone: "1-268" },
-  { code: "AI", label: "Anguilla", phone: "1-264" },
+  { label: "Progress Payment for painting at" },
+  { label: "Balance of Contract for painting at" },
+  { label: "Other" },
 ];
 const options = ["Yes", "No"];
 const useStyles = makeStyles((theme) => ({
@@ -38,6 +37,16 @@ export default function Page() {
   const [value, setValue] = React.useState(options[0]);
   const [inputValue, setInputValue] = React.useState("");
   const classes = useStyles();
+  const [val, setVal] = useState([0]);
+  const handleAdd = () => {
+    const d = [...val, []];
+    setVal(d);
+  };
+  const handleDelete = (i) => {
+    const dVal = [...val];
+    dVal.splice(i, 1);
+    setVal(dVal);
+  };
   return (
     <React.Fragment>
       <CssBaseline />
@@ -47,7 +56,7 @@ export default function Page() {
           style={{
             backgroundColor: "white",
             width: "800px",
-            height: "275vh",
+            height: "240vh",
             boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
             marginTop: "30px",
             marginBottom: "30px",
@@ -335,7 +344,18 @@ export default function Page() {
                     <Autocomplete
                       {...field}
                       size="small"
-                      style={{ paddingBottom: "40px", margin: 0 }}
+                      inputProps={{
+                        style: {
+                          height: 35,
+
+                          padding: "0 14px",
+                        },
+                      }}
+                      style={{
+                        paddingBottom: "40px",
+                        margin: 0,
+                        width: 370,
+                      }}
                       value={value}
                       onChange={(event, newValue) => {
                         setValue(newValue);
@@ -386,108 +406,116 @@ export default function Page() {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    <TableRow>
-                      <TableCell align="left">
-                        <MoreVertIcon />
-                        <AddCircleOutlineIcon />
-                      </TableCell>
-                      <TableCell align="left">
-                        <Controller
-                          control={control}
-                          name="Job No"
-                          render={({ field }) => (
-                            <TextField
-                              {...field}
-                              inputProps={{
-                                style: {
-                                  height: 38,
-                                  width: 100,
-                                  padding: "0 14px",
-                                },
-                              }}
-                              variant="outlined"
-                              size="small"
+                    {val.map((data, i) => {
+                      return (
+                        <TableRow>
+                          <TableCell align="left">
+                            <DeleteIcon
+                              style={{ marginRight: "5px" }}
+                              onClick={(i) => handleDelete()}
                             />
-                          )}
-                        />
-                      </TableCell>
-                      <TableCell align="left">
-                        <Controller
-                          control={control}
-                          name="Contract Description"
-                          render={({ field }) => (
-                            <Autocomplete
-                              {...field}
-                              size="small"
-                              id="country-select-demo"
-                              style={{ width: 130 }}
-                              options={countries}
-                              classes={{
-                                option: classes.option,
-                              }}
-                              autoHighlight
-                              getOptionLabel={(option) => option.label}
-                              renderOption={(option) => (
-                                <React.Fragment>
-                                  {option.label} ({option.code}) +{option.phone}
-                                </React.Fragment>
-                              )}
-                              renderInput={(params) => (
+                            <AddCircleOutlineIcon onClick={() => handleAdd()} />
+                          </TableCell>
+                          <TableCell align="left">
+                            <Controller
+                              control={control}
+                              name="Job No"
+                              render={({ field }) => (
                                 <TextField
                                   {...field}
-                                  {...params}
-                                  variant="outlined"
                                   inputProps={{
-                                    ...params.inputProps,
-                                    autoComplete: "new-password", // disable autocomplete and autofill
+                                    style: {
+                                      height: 38,
+                                      width: 100,
+                                      padding: "0 14px",
+                                    },
                                   }}
+                                  variant="outlined"
+                                  size="small"
                                 />
                               )}
                             />
-                          )}
-                        />
-                      </TableCell>
-                      <TableCell align="left">
-                        <Controller
-                          control={control}
-                          name="Site Name/Other"
-                          render={({ field }) => (
-                            <TextField
-                              {...field}
-                              inputProps={{
-                                style: {
-                                  height: 38,
-                                  width: 100,
-                                  padding: "0 14px",
-                                },
-                              }}
-                              variant="outlined"
-                              size="small"
+                          </TableCell>
+                          <TableCell align="left">
+                            <Controller
+                              control={control}
+                              name="Contract Description"
+                              render={({ field }) => (
+                                <Autocomplete
+                                  {...field}
+                                  size="small"
+                                  id="country-select-demo"
+                                  style={{ width: 130 }}
+                                  options={countries}
+                                  classes={{
+                                    option: classes.option,
+                                  }}
+                                  autoHighlight
+                                  getOptionLabel={(option) => option.label}
+                                  renderOption={(option) => (
+                                    <React.Fragment>
+                                      {option.label}
+                                    </React.Fragment>
+                                  )}
+                                  renderInput={(params) => (
+                                    <TextField
+                                      label="-Select-"
+                                      {...field}
+                                      {...params}
+                                      variant="outlined"
+                                      inputProps={{
+                                        ...params.inputProps,
+                                        autoComplete: "new-password", // disable autocomplete and autofill
+                                      }}
+                                    />
+                                  )}
+                                />
+                              )}
                             />
-                          )}
-                        />
-                      </TableCell>
-                      <TableCell align="left">
-                        <Controller
-                          control={control}
-                          name="Price"
-                          render={({ field }) => (
-                            <TextField
-                              {...field}
-                              inputProps={{
-                                style: {
-                                  height: 38,
-                                  width: 100,
-                                  padding: "0 14px",
-                                },
-                              }}
-                              variant="outlined"
-                              size="small"
+                          </TableCell>
+                          <TableCell align="left">
+                            <Controller
+                              control={control}
+                              name="Site Name/Other"
+                              render={({ field }) => (
+                                <TextField
+                                  {...field}
+                                  inputProps={{
+                                    style: {
+                                      height: 38,
+                                      width: 100,
+                                      padding: "0 14px",
+                                    },
+                                  }}
+                                  variant="outlined"
+                                  size="small"
+                                />
+                              )}
                             />
-                          )}
-                        />
-                      </TableCell>
-                    </TableRow>
+                          </TableCell>
+                          <TableCell align="left">
+                            <Controller
+                              control={control}
+                              name="Price"
+                              render={({ field }) => (
+                                <TextField
+                                  {...field}
+                                  inputProps={{
+                                    style: {
+                                      height: 38,
+                                      width: 100,
+                                      padding: "0 14px",
+                                    },
+                                  }}
+                                  variant="outlined"
+                                  size="small"
+                                />
+                              )}
+                            />
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
                   </TableBody>
                 </Table>
 
