@@ -78,7 +78,7 @@ export default function Page() {
                 noValidate
                 autoComplete="off"
               >
-                <p style={{ paddingTop: "25px" }}>
+                <p style={{ paddingTop: "25px", margin: "2px" }}>
                   First Name <span style={{ color: "red" }}>*</span>
                 </p>
                 <Controller
@@ -96,13 +96,12 @@ export default function Page() {
                         },
                       }}
                       id="outlined-basic"
-                      label="First name"
                       variant="outlined"
                       size="small"
                     />
                   )}
                 />
-                <p>Last Name</p>
+                <p style={{ margin: "2px" }}>Last Name</p>
 
                 <Controller
                   control={control}
@@ -119,14 +118,13 @@ export default function Page() {
                         },
                       }}
                       id="outlined-basic"
-                      label="Last name"
                       variant="outlined"
                       size="small"
                     />
                   )}
                 />
 
-                <p>
+                <p style={{ margin: "2px" }}>
                   Email <span style={{ color: "red" }}>*</span>
                 </p>
                 <Controller
@@ -144,14 +142,13 @@ export default function Page() {
                         },
                       }}
                       id="outlined-basic"
-                      label="Email"
                       variant="outlined"
                       size="small"
                     />
                   )}
                 />
 
-                <p>Trading Name</p>
+                <p style={{ margin: "2px" }}>Trading Name</p>
                 <Controller
                   control={control}
                   name="Trading Name"
@@ -167,14 +164,13 @@ export default function Page() {
                         },
                       }}
                       id="outlined-basic"
-                      label="Trading name"
                       variant="outlined"
                       size="small"
                     />
                   )}
                 />
 
-                <p>ABN</p>
+                <p style={{ margin: "2px" }}>ABN</p>
                 <Controller
                   control={control}
                   name="ABN"
@@ -190,14 +186,13 @@ export default function Page() {
                         },
                       }}
                       id="outlined-basic"
-                      label="ABN"
                       variant="outlined"
                       size="small"
                     />
                   )}
                 />
 
-                <p>Street</p>
+                <p style={{ margin: "2px" }}>Street</p>
                 <Controller
                   control={control}
                   name="Street"
@@ -213,14 +208,13 @@ export default function Page() {
                         },
                       }}
                       id="outlined-basic"
-                      label="Street"
                       variant="outlined"
                       size="small"
                     />
                   )}
                 />
 
-                <p>City</p>
+                <p style={{ margin: "2px" }}>City</p>
                 <Controller
                   control={control}
                   name="City"
@@ -236,14 +230,13 @@ export default function Page() {
                         },
                       }}
                       id="outlined-basic"
-                      label="City"
                       variant="outlined"
                       size="small"
                     />
                   )}
                 />
 
-                <p>State</p>
+                <p style={{ margin: "2px" }}>State</p>
                 <Controller
                   control={control}
                   name="State"
@@ -259,14 +252,13 @@ export default function Page() {
                         },
                       }}
                       id="outlined-basic"
-                      label="State"
                       variant="outlined"
                       size="small"
                     />
                   )}
                 />
 
-                <p>Postcode</p>
+                <p style={{ margin: "2px" }}>Postcode</p>
                 <Controller
                   control={control}
                   name="Postcode"
@@ -282,14 +274,13 @@ export default function Page() {
                         },
                       }}
                       id="outlined-basic"
-                      label="Postcode"
                       variant="outlined"
                       size="small"
                     />
                   )}
                 />
 
-                <p>Invoice Date</p>
+                <p style={{ margin: "2px" }}>Invoice Date</p>
                 <Controller
                   control={control}
                   name="Invoice Date"
@@ -312,7 +303,7 @@ export default function Page() {
                   )}
                 />
 
-                <p>Invoice No</p>
+                <p style={{ margin: "2px" }}>Invoice No</p>
                 <Controller
                   control={control}
                   name="Invoice No"
@@ -328,14 +319,13 @@ export default function Page() {
                         },
                       }}
                       id="outlined-basic"
-                      label="Invoice No"
                       variant="outlined"
                       size="small"
                     />
                   )}
                 />
 
-                <p>
+                <p style={{ margin: "2px" }}>
                   Registered for GST? <span style={{ color: "red" }}>*</span>
                 </p>
                 <Controller
@@ -345,7 +335,7 @@ export default function Page() {
                     <Autocomplete
                       {...field}
                       size="small"
-                      style={{ padding: 0, margin: 0 }}
+                      style={{ paddingBottom: "40px", margin: 0 }}
                       value={value}
                       onChange={(event, newValue) => {
                         setValue(newValue);
@@ -377,7 +367,7 @@ export default function Page() {
                 />
 
                 <Table>
-                  <TableHead>
+                  <TableHead style={{ borderTop: "1px solid #ddd" }}>
                     <TableRow>
                       <TableCell></TableCell>
                       <TableCell>
@@ -446,7 +436,6 @@ export default function Page() {
                                 <TextField
                                   {...field}
                                   {...params}
-                                  label="Select"
                                   variant="outlined"
                                   inputProps={{
                                     ...params.inputProps,
@@ -502,7 +491,7 @@ export default function Page() {
                   </TableBody>
                 </Table>
 
-                <p style={{ paddingTop: "25px" }}>Total G.S.T</p>
+                <p style={{ paddingTop: "25px", margin: "2px" }}>Total G.S.T</p>
                 <Controller
                   control={control}
                   name="Total G.S.T"
@@ -518,19 +507,19 @@ export default function Page() {
                         },
                       }}
                       id="outlined-basic"
-                      label="Total G.S.T"
                       variant="outlined"
                       size="small"
                     />
                   )}
                 />
 
-                <p>Total Inclusive of G.S.T</p>
+                <p style={{ margin: "2px" }}>Total Inclusive of G.S.T</p>
                 <Controller
                   control={control}
                   name="Total Inclusive of G.S.T"
                   render={({ field }) => (
                     <TextField
+                      {...field}
                       style={{ paddingBottom: "25px" }}
                       inputProps={{
                         style: {
@@ -540,19 +529,19 @@ export default function Page() {
                         },
                       }}
                       id="outlined-basic"
-                      label="Total Inclusive of G.S.T"
                       variant="outlined"
                       size="small"
                     />
                   )}
                 />
 
-                <p>Account Name</p>
+                <p style={{ margin: "2px" }}>Account Name</p>
                 <Controller
                   control={control}
                   name="Account Name"
                   render={({ field }) => (
                     <TextField
+                      {...field}
                       style={{ paddingBottom: "25px" }}
                       inputProps={{
                         style: {
@@ -562,19 +551,19 @@ export default function Page() {
                         },
                       }}
                       id="outlined-basic"
-                      label="Account name"
                       variant="outlined"
                       size="small"
                     />
                   )}
                 />
 
-                <p>Bank</p>
+                <p style={{ margin: "2px" }}>Bank</p>
                 <Controller
                   control={control}
                   name="Bank"
                   render={({ field }) => (
                     <TextField
+                      {...field}
                       style={{ paddingBottom: "25px" }}
                       inputProps={{
                         style: {
@@ -584,19 +573,19 @@ export default function Page() {
                         },
                       }}
                       id="outlined-basic"
-                      label="Bank"
                       variant="outlined"
                       size="small"
                     />
                   )}
                 />
 
-                <p>Account No.</p>
+                <p style={{ margin: "2px" }}>Account No.</p>
                 <Controller
                   control={control}
                   name="Account No."
                   render={({ field }) => (
                     <TextField
+                      {...field}
                       style={{ paddingBottom: "25px" }}
                       inputProps={{
                         style: {
@@ -606,19 +595,19 @@ export default function Page() {
                         },
                       }}
                       id="outlined-basic"
-                      label="Account No."
                       variant="outlined"
                       size="small"
                     />
                   )}
                 />
 
-                <p>BSB</p>
+                <p style={{ margin: "2px" }}>BSB</p>
                 <Controller
                   control={control}
                   name="BSB"
                   render={({ field }) => (
                     <TextField
+                      {...field}
                       style={{ paddingBottom: "25px" }}
                       inputProps={{
                         style: {
@@ -628,7 +617,6 @@ export default function Page() {
                         },
                       }}
                       id="outlined-basic"
-                      label="BSB"
                       variant="outlined"
                       size="small"
                     />
@@ -642,6 +630,7 @@ export default function Page() {
                       color: "white",
                       backgroundColor: "#009688",
                     }}
+                    type="submit"
                     variant="contained"
                   >
                     Submit
